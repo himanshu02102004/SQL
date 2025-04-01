@@ -62,3 +62,62 @@ ORDER BY EmpName;
 insert into employee(ID,EmpName,City,Salary)
 values('7','priyan','naishik','2000');
 
+select * from employee
+where City LIKE  'M%';
+
+select * from employee
+where City LIKE  '_U%';
+
+select * from employee
+where City NOT LIKE 'M%';
+
+
+
+
+
+
+
+
+select max(Salary) AS Result
+from employee;
+
+
+select min(Salary) AS result
+from employee;
+
+
+select SUM(Salary)
+from employee;
+
+select SUM(Salary)
+from employee
+where Salary >=5000;
+
+
+select AVG(Salary)
+from employee
+
+select AVG(Salary)
+from employee
+where Salary > 2000;
+
+
+select * from employee;
+
+select count(City)
+from employee;
+
+
+select count (Salary)
+from employee
+where Salary >=5000;
+
+select count(*)
+from employee;
+
+
+
+
+
+
+
