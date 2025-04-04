@@ -1,123 +1,38 @@
-create database himanshudb;
+CREATE DATABASE MyDB
 
-use himanshudb;
+use MyDB;
 
+create table Student(
 
-select * from employee;
+Id INT PRIMARY KEY,
+StudentName varchar(250),
+StudentGender varchar(250),
+Age INT,
+Standard INT,
+FatherName varchar(250)
 
-select * from employee
-order by Salary;
 
-select * from employee
-order by Salary DESC;
+);
 
 
-select * from employee
-order by City,Salary ;
+insert into Student(Id,StudentName,StudentGender,Age,Standard,FatherName)
+values('1','himanshu','male','22','12','jogi');
 
+insert into Student(Id,StudentName,StudentGender,Age,Standard,FatherName)
+values('2','pria','female','32','12','premnath');
 
+insert into Student(Id,StudentName,StudentGender,Age,Standard,FatherName)
+values('3','som','female','42','10','shubh');
 
-select * from employee
-where City='gumba' AND Salary='5000';
 
 
-select * from employee
-where City='gumba' OR City='mumba';
+insert into Student(Id,StudentName,StudentGender,Age,Standard,FatherName)
+values('5','yash','male','22','15','vath');
 
 
-select * from employee
-where not salary='5000'
+insert into Student(Id,StudentName,StudentGender,Age,Standard,FatherName)
+values('4','riyia','female','12','10','sonu');
 
+use  MyDB
 
-
-select * from employee
-where City IN('fumba','mumba');
-
-select * from employee
-where EmpName NOT IN ('pom','tom');
-
-select * from employee
-where EmpName  IN ('pom','tom');
-
-
-select * from employee
-where Salary BETWEEN 5000 AND 5000;
-
-select * from employee
-where Salary  NOT  BETWEEN 5000 AND 1000;
-
-select * from employee
-where EmpName   BETWEEN 'priyan' AND 'tom'
-ORDER BY EmpName;	
-
-
-
-
-
-
-
-
-
-
-insert into employee(ID,EmpName,City,Salary)
-values('7','priyan','naishik','2000');
-
-select * from employee
-where City LIKE  'M%';
-
-select * from employee
-where City LIKE  '_U%';
-
-select * from employee
-where City NOT LIKE 'M%';
-
-
-
-
-
-
-
-
-select max(Salary) AS Result
-from employee;
-
-
-select min(Salary) AS result
-from employee;
-
-
-select SUM(Salary)
-from employee;
-
-select SUM(Salary)
-from employee
-where Salary >=5000;
-
-
-select AVG(Salary)
-from employee
-
-select AVG(Salary)
-from employee
-where Salary > 2000;
-
-
-select * from employee;
-
-select count(City)
-from employee;
-
-
-select count (Salary)
-from employee
-where Salary >=5000;
-
-select count(*)
-from employee;
-
-
-
-
-
-
-
+select * from Student; 
