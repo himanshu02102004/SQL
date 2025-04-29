@@ -1,38 +1,38 @@
-CREATE DATABASE MyDB
+create database pratices;
 
-use MyDB;
+use pratices;
 
-create table Student(
-
-Id INT PRIMARY KEY,
-StudentName varchar(250),
-StudentGender varchar(250),
-Age INT,
-Standard INT,
-FatherName varchar(250)
-
+create table Department(
+ DepartmentID INT Primary Key,
+ DepartmentNmae VARCHAR(50) NOT NULL
+	
 
 );
 
 
-insert into Student(Id,StudentName,StudentGender,Age,Standard,FatherName)
-values('1','himanshu','male','22','12','jogi');
-
-insert into Student(Id,StudentName,StudentGender,Age,Standard,FatherName)
-values('2','pria','female','32','12','premnath');
-
-insert into Student(Id,StudentName,StudentGender,Age,Standard,FatherName)
-values('3','som','female','42','10','shubh');
+create table Employee(
+EmployeeId INT Primary Key,
+EmployeeName Varchar(50),
+DepartmentID INT ,
+Salary Decimal(10,2),
 
 
+FOREIGN KEY (DepartmentID) REFERENCES Department(DepartmentID)
 
-insert into Student(Id,StudentName,StudentGender,Age,Standard,FatherName)
-values('5','yash','male','22','15','vath');
+);
 
 
-insert into Student(Id,StudentName,StudentGender,Age,Standard,FatherName)
-values('4','riyia','female','12','10','sonu');
 
-use  MyDB
+create table Salaries(
+EmployeeId INT Primary key,
+Salary Decimal(10,2),
 
-select * from Student; 
+FOREIGN KEY (EmployeeId) REFERENCES Employee(EmployeeId)
+
+);
+
+
+USE pratices
+
+INSERT INTO Department
+VALUES (1,'HR'), (2,'IT'), (3,'FINANCE');

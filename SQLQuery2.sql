@@ -1,22 +1,13 @@
-use himanshudb;
+SELECT TOP (1000) [ID]
+      ,[Name]
+      ,[Gender]
+      ,[Salary]
+      ,[DepartmentId]
+  FROM [exercises].[dbo].[tblEmployee]
+  
+  USE exercises
+  INSERT INTO tbldepartment(DepartmentName,Location,DepartmentHead) VALUES
+  ('OTHER DEPARTMENT','SYDNEY','CINDRELAA')
 
-create table Employees(
-
-ID int NOT NULL,
-EmpName varchar(255) NOT NULL,
-City varchar(255),
-Salary int 
-)
-
-
-insert into Employees(ID,EmpName,City,Salary)
-values('1','Tom','mumbai','8000');
-
-
-insert into Employees(ID,EmpName,City,Salary)
-values('2','jom','Jaipur','9000');
-
-
-
-select * from Employees;
-
+  select * from tbldepartment
+  select * from tblEmployee
