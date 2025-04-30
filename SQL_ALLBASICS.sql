@@ -215,9 +215,122 @@ SELECT * FROM Customer1
 
 
 SELECT  C1.CustomerName AS Customer,
-       C2.CustomerName AS ReferredBy
+      I C2.CustomerName AS ReferredBy
 FROM Customer1  C1
 INNER JOIN Customer1 C2
 ON    C1.CustomerReferenceId_fk= C2.CustomerId;
 
+
+
+SELECT * FROM Customer1
+
+SELECT C1.CustomerName AS Customer,
+      ISNULL( C2.CustomerName,'DIRECT WALKING') AS ReferredBy
+FROM Customer1 C1
+LEFT JOIN Customer1  C2
+ON  C1.CustomerReferenceId_fk = C2.CustomerId 
+
+
+select * from Customer1
+
+select * from Customer
+select * from ProductCustomer
+
+INSERT INTO Customer(CustomerID,Name) VALUES
+(3,'RIZWAN'),
+(4,'YOGI');
+
+SELECT * FROM ProductCustomer
+
+INSERT INTO ProductCustomer(ProductCustomerID,CustomerID,ProductID,SaleDate) VALUES
+(3,3,2,'2024-6-13');
   
+
+
+
+
+
+
+
+//// SUBQUERIES
+
+
+SELECT Name FROM Customer
+Where Customer.CustomerID IN 
+(SELECT ProductCustomer.CustomerID
+   FROM ProductCustomer);
+
+
+
+   SELECT * FROM Product order by Price
+
+
+   /// EXPLAIN IN NOTES
+   select ProductName from Product as p1
+   Where 2=(select Count(*)
+     FROM Product p2
+	 Where p2.Price >=p1.Price)
+
+INSERT INTO Product(ProductID,ProductName,Price)VALUES
+(3,'MOUSE',400),
+(4,'WATCH',600),
+(5,'CHARGER',700);
+
+
+
+
+
+SELECT 
+MAX(Price) AS MAXIMUMCOST,
+MIN(Price) AS MINIMUMCOST,
+AVG(Price) AS OVERALLCOST
+FROM Product
+
+
+SELECT * 
+FROM Product
+Where Price
+BETWEEN 100 and 600
+
+
+
+select *
+into tble2
+from Product
+
+
+select * from tble2
+
+select top 2 * from  tble2
+order by Price desc
+
+use exercises2
+
+SELECT * FROM TbleProducttable
+SELECT *
+INTO TbleProducttable
+FROm Product
+
+
+
+
+
+
+Select * from TbleProducttable2
+
+
+
+update TbleProducttable2
+set PropName ='Phone',
+  PropPrice=56
+  where  PropID=2
+
+
+
+CREATE TABLE TbleProducttable2(
+
+PropID INT PRIMARY KEY,
+PropName VARCHAR(50),
+PropPrice DECIMAL(5,2)
+
+)
