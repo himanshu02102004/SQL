@@ -86,7 +86,10 @@ CREATE PROC sPGetEmployeeByNameandCustomerId
    Select Name ,CustomerID FROM Customer Where Name=@Name  and CustomerID= @CustomerID
  END
 
+
+ ////FOR SEARCH PURPOSE
  sPGetEmployeeByNameandCustomerId 'HIMA' ,2
+
 
  sp_helptext spGetCustomer
  
@@ -143,6 +146,7 @@ END
 
 
 
+
 ////////////// TO VIEW THE TABLE///////////////////////////
 sp_helptext sPGetEmployeeByNameandCustomerId
 
@@ -195,6 +199,9 @@ END
 
 
 
+
+// upaar wale ko declare and call out karne ke liye use hota hai
+
 /////////////declare with output keyword/////////////
 
 DECLARE @TotalCount int 
@@ -232,3 +239,113 @@ tble2
 sp_depends spGetEmployeeCountbyName
 
 sp_depends Customer1
+
+
+// STORED PROCEDURE WITH OUT PARAMETER PRACTICES
+
+
+ select * from CUSTOMER3
+
+
+CREATE PROC spgetbyCusnameandid
+@CustomerName nvarchar(50),
+@CustomerCount int  output
+as 
+begin
+ select @CustomerCount=COUNT(CustomerId)  from CUSTOMER3 Where  CustomerName=@CustomerName
+End
+
+
+
+
+DECLARE @totalCount int 
+EXECUTE spgetbyCusnameandid 'bhup' ,@totalCount Output
+Print @totalCount
+
+
+
+DECLARE @totalCount int
+EXECUTE spgetbyCusnameandid 'bhup', @totalcount Output
+Print @totalCount 
+
+
+
+
+insert into CUSTOMER3 VALUES
+(4,'bhup');
+
+DECLARE @totalcount int
+EXECUTE spgetbyCusnameandid      @CustomerCount=@totalcount  out,@CustomerName='bhup'
+print @totalcount
+
+
+
+///////////STORED PROCEDURE BY OUTPUT PARAMETER OR RETURN VALUES
+
+
+select * from Customer
+
+
+CREATE PROC spgettotalcountemployee
+@TotalCount int output
+as
+begin
+SELECT @TotalCount=COUNT(CustomerID) FROM Customer
+END
+
+
+DECLARE @TotalCustomer int 
+EXECUTE spgettotalcountemployee @TotalCustomer output
+PRINT @TotalCustomer
+
+
+
+
+/// samething write with return keyword
+
+
+
+CREATE PROC spgettotalcountemployee1
+AS
+BEGIN 
+return (select COUNT(CustomerID) FROM Customer)
+End
+
+DECLARE @TOTAL int
+EXECUTE @TOTAL=spgettotalcountemployee1
+PRINT  @TOTAL
+
+
+
+select * from  Customer
+
+
+
+/////////spgetcustomer by id  //////////////// 
+
+CREATE PROC spgetcustomerid
+@CustomerID int,
+@Name nvarchar(50) output
+as
+begin 
+select Name from Customer where CustomerID=@CustomerID
+END
+
+
+DECLARE @Name nvarchar(50)
+EXECUTE spgetcustomerid 1 , @Name out
+print 'NAME =' + @Name
+
+
+// samething written with return keyword
+
+CREATE PROC spgetcustomerid1
+@CustomerID int
+as 
+begin 
+ return (Select Name from Customer where CustomerID=@CustomerID)
+ END
+
+ declare @Resultid nvarchar(20)
+ execute @Resultid=spgetcustomerid1 1
+ print  'Result = ' + @Resultid
