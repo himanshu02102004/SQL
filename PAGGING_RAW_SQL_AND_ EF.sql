@@ -35,3 +35,10 @@ END
 EXEC spGetPaggedProduct @PageNumber=1, @Pagesize=2;
 
 select * from product
+
+
+
+
+
+////////////////////////SERVER SIZE PAGGING WITH EF/////////
+
