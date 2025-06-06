@@ -1,9 +1,3 @@
-SELECT TOP (1000) [DepartmentID]
-      ,[DepartmentNmae]
-  FROM [pratices].[dbo].[Department]
+USE invoicing
 
-
-
-  USE pratices
-
-  insert into 
+SELECT * FROM payment_methods

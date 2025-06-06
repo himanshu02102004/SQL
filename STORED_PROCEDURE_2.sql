@@ -28,13 +28,12 @@ insert into Orders values
 (2,3,'2024-5-15'),
 (3,2,'2022-6-12');
 
-
-
+use exercises2
 select * from CUSTOMER3
 
 select *  from Orders where CustomerId=1;
 select * from Orders where CustomerId=2;
-
+select * from Orders
 
 
 
@@ -59,6 +58,7 @@ ON  C.CustomerId= o.CustomerId
 
 
 use exercises2
+
 SELECT * FROM Customer
 CREATE PROCEDURE spGetCustomer 
 AS
@@ -143,8 +143,11 @@ Begin
 Select Name ,CustomerID FROM Customer   Where Name=@Name and CustomerID=@CustomerID
 END
 
+sPGetEmployeeByNameandCustomerId 'HIMA',2
 
 
+
+Select * from Customer
 
 
 ////////////// TO VIEW THE TABLE///////////////////////////
@@ -194,6 +197,7 @@ Begin
    Select @EmployeeCount=COUNT(Id) from tblEmplyee where Names = @Names
 END
 
+select * from tblEmplyee
 
 
 
@@ -280,6 +284,10 @@ print @totalcount
 
 
 
+
+
+
+
 ///////////STORED PROCEDURE BY OUTPUT PARAMETER OR RETURN VALUES
 
 
@@ -349,3 +357,55 @@ begin
  declare @Resultid nvarchar(20)
  execute @Resultid=spgetcustomerid1 1
  print  'Result = ' + @Resultid
+
+
+
+
+
+
+ ///////////////PRATICES//////////
+
+
+
+
+ SELECT * FROM TbleProducttable
+
+ CREATE PROC  prod1
+ @ProductName varchar(50),
+ @Productcount int  output
+ As
+ Begin
+ Select @Productcount=Count(ProductID) from TbleProducttable where ProductName=@ProductName
+ END
+
+ DECLARE @totalcount int
+ Execute prod1 'Laptop' , @totalcount output
+ PRINT @totalcount
+
+
+
+ prod1 'Laptop'
+
+
+
+
+
+
+
+ ///////pratices with return keyword///////
+
+
+ select * from ProductCustomer
+
+
+ create proc spProandCusID
+ as
+ begin 
+ select ProductCustomerID,CustomerID from ProductCustomer 
+ End
+
+
+ select * from ProductCustomer
+
+
+

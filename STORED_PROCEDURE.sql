@@ -1,6 +1,7 @@
 
 
 
+
 ///  N+ 1 PROBLEM
 
 USE exercises2
@@ -28,7 +29,7 @@ insert into Orders values
 (2,3,'2024-5-15'),
 (3,2,'2022-6-12');
 
-
+use exercises2
 
 select * from CUSTOMER3
 
@@ -132,3 +133,31 @@ Select Name ,CustomerID FROM Customer   Where Name=@Name and CustomerID=@Custome
 END
 
 sp_helptext sPGetEmployeeByNameandCustomerId
+
+select * from Customer
+select * from Product
+
+
+create proc spbyOrdersandProduct
+@ProductID int,
+@ProductName varchar(30)
+as
+begin
+select ProductID,ProductName from Product where ProductID=@ProductID and ProductName=@ProductName
+End
+
+spbyOrdersandProduct 1,'Laptop';
+spbyOrdersandProduct 1,'Laptop'
+
+select * from Orders
+select * from Product
+
+
+create  proc  spbyOrdersProduct
+As
+begin 
+select ProductID , ProductName from Product
+End
+
+spbyOrdersProduct
+
