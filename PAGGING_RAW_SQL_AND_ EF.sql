@@ -1,3 +1,6 @@
+
+create database exercises2
+
 use exercises2
 
 
