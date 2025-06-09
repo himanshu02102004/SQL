@@ -252,4 +252,21 @@ select
 	BEGIN 
 	SET ONCOUNT NO
 
+	
+	/////////scalar and table value function////////////
+
+
+
+	CREATE FUNCTION Dbo.fullname
+	(
+	@fullname varchar(100),
+	@lastname varchar(100)
+	)
+	RETURNS varchar(100)
+	AS
+	BEGIN
+	RETURN @fullname + ' ' + @lastname
+	END
+
+	SELECT Dbo.fullname('him','mis')
 
