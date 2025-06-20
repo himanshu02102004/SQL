@@ -78,13 +78,17 @@ spGetCustomer
 
 /// THIS IS FOR  PARMETER
 
-CREATE PROC sPGetEmployeeByNameandCustomerId
+CREATE PROC sPGetEmployeeByNameandCustomerId 
  @Name  nvarchar(20),
  @CustomerID int
  as 
  BEGIN
    Select Name ,CustomerID FROM Customer Where Name=@Name  and CustomerID= @CustomerID
  END
+
+
+ select * from Customer
+
 
 
  ////FOR SEARCH PURPOSE
@@ -102,10 +106,16 @@ END
 
 
 
+select * from Product
+create proc sporder
+@ProductID int ,
+@Productname varchar(50) 
+as
+begin 
+select ProductID ,Productname  FROM Product where ProductID=@ProductID  and ProductName=@ProductName
+End;
 
-
-
-
+sporder 1,laptop
 
 
 
@@ -201,9 +211,6 @@ select * from tblEmplyee
 
 
 
-
-
-
 // upaar wale ko declare and call out karne ke liye use hota hai
 
 /////////////declare with output keyword/////////////
@@ -211,6 +218,24 @@ select * from tblEmplyee
 DECLARE @TotalCount int 
 Execute spGetEmployeeCountbyName 'hima', @TotalCount output
 Print @TotalCount
+
+
+
+
+
+
+
+select * from tble2
+
+create proc sptble
+@ProductID INT,
+@ProductName output
+as  
+begin 
+select @ProductID=COUNT(ID) FROM tble2 where ProductName=@ProducName
+end
+
+
 
 
 
@@ -226,8 +251,7 @@ if (@TotalCount is null)
 
 Print @TotalCount
 
-
-
+create procedure sp
 
 /////////DIRECT PARAMETER USED /////////////////////
 
@@ -259,12 +283,11 @@ begin
  select @CustomerCount=COUNT(CustomerId)  from CUSTOMER3 Where  CustomerName=@CustomerName
 End
 
-
-
-
 DECLARE @totalCount int 
 EXECUTE spgetbyCusnameandid 'bhup' ,@totalCount Output
 Print @totalCount
+
+SELECT * FROM CUSTOMER3
 
 
 

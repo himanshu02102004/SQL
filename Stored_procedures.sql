@@ -9,7 +9,7 @@ create table product(
 productid INT  PRIMARY KEY,
 productName NVARCHAR(100),
 CategoryID INT,
-CategoryName NVARCHAR(50),
+Createdby NVARCHAR(50),
 CreatedDate  Datetime
 );
 
@@ -29,6 +29,10 @@ userName nvarchar(100)
 
 
 SELECT * FROM product
+
+
+
+select * from product
 
 
 CREATE PROC STOREDPROCEDUREREPORT
@@ -62,3 +66,5 @@ FROM product p
  INSERT INTO product VALUES
  (1,'PHONE',1,'UJWAL',2025-2-20),
  (2,'FREEFIRE',2,'RAHUL',2025-3-13);
+
+

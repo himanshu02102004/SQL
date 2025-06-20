@@ -34,6 +34,10 @@ INSERT INTO Department(DepartmentID,DepartmentName) VALUES
 (3,'FINANCE'),
 (4,'LOAD')
 
+
+
+
+
 //////////////  QUERY NO.1  SOLUTION /////////////////////////////
 
 select 
@@ -95,6 +99,9 @@ select
   drop table Product
 
  
+ ////SQL Server will return a message like:  (1 row(s) affected)  when  SETNOCOUNT NO
+
+
 
 
 	CREATE PROCEDURE PRODUCTWITHCATEGORY
@@ -118,7 +125,6 @@ select
 	END;
 
 	PRODUCTWITHCATEGORY 1 , 3
-
 
 
 
@@ -193,9 +199,7 @@ select
 	InsertDate DATETIME
 	
 	);
-
-
-	CREATE TRIGGER trg_Product_Insert
+    CREATE TRIGGER trg_Product_Insert
 	ON Producttri
 	AFTER INSERT
 	AS
@@ -270,3 +274,42 @@ select
 
 	SELECT Dbo.fullname('him','mis')
 
+
+
+	use review3
+
+	create table Users(
+	userid int primary key IDENTITY(1,1),
+	username nvarchar(100),
+	phoneno int 
+	
+	);
+
+  create table Orders(
+  OrderId int Primary key IDENTITY(1,1),
+  OrderDate datetime DEFAULT GETDATE(),
+  userid int,
+  FOREIGN KEY (userid) REFERENCES users(userid)
+  
+  );
+  
+  insert into Users(username,phoneno)
+  values('himu',234),
+  ('priyan',89),
+  ('awale',34),
+  ('yash',56),
+  ('sahil',67);
+
+
+  insert into Orders(userid)
+  values
+  (1),
+  (2),
+  (3),
+  (4),
+  (5);
+  
+
+  select u.phoneno,u.username, o.OrderDate,o.OrderId
+  from Users u
+  JOIN Orders o ON u.userid= o.userid;
