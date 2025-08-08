@@ -432,3 +432,26 @@ begin
 
 
 
+ select * from Customer
+ select * from Customer1
+ select * from Product
+
+
+ create proc spproduct2
+ @ProductName nvarchar(50),
+ @Price int output
+ as
+ begin 
+        select  @Price = count(ProductID) 
+        from Product 
+		where ProductName=@ProductName
+ end
+
+
+
+ DECLARE @Productotal int
+ EXECUTE spproduct2  'Laptop', @Productotal output
+ print @Productotal
+
+
+
